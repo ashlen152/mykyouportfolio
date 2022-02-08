@@ -114,9 +114,7 @@ const GlobalStyled = createGlobalStyle`
     color: ${colors.slate};
     font-size: clamp(28px, 6vw, 70px);
   }
-  .fadeIn {
-    opacity: 100;
-  }
+
   .blur {
     filter: blur(5px) brightness(0.7);
     transition: var(--transition);
