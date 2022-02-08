@@ -10,7 +10,6 @@ import Header from './Header'
 import useTimeout from './useTimeout'
 import theme from './styled/theme'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import { useEffect } from 'react/cjs/react.development'
 
 const { colors, fontSizes, transition, medias, fonts } = theme
 
