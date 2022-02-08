@@ -1,232 +1,17 @@
 import React, { useRef, useState } from 'react'
-import { Logo, Header } from './styled/Header'
-import theme from './styled/theme'
-import styled from 'styled-components'
+import {
+  Logo,
+  Header,
+  HambergerContainer,
+  HambergerBox,
+  HambergerInner,
+  Navbar,
+  SidePageLeft,
+  SocialList,
+  SidePageRight,
+  HambergerButton
+} from './styled/Header'
 import useClickOutsideWith2Ref from './useClickOutSide'
-const { colors, fontSizes, transition, medias } = theme
-const SidePage = styled.div`
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  bottom: 0;
-  opacity: 0;
-  color: ${colors.lightSlate};
-  transition: ${transition};
-
-  ::after {
-    margin-top: 10px;
-    content: '';
-    height: 90px;
-    width: 1px;
-    background-color: ${colors.lightSlate};
-  }
-
-  ul,
-  ul > li,
-  ul > li > a,
-  > a {
-    text-decoration: none;
-    list-style: none;
-    color: inherit;
-  }
-
-  @media (max-width: ${medias.xs}) {
-    display: none;
-  }
-`
-
-const SidePageLeft = styled(SidePage)`
-  left: 40px;
-  transition-delay: 1200ms;
-
-  @media (max-width: ${medias.sm}) {
-    left: 20px;
-    transition-delay: 0ms;
-  }
-`
-const SidePageRight = styled(SidePage)`
-  right: 40px;
-  width: 40px;
-  transition-delay: 1300ms;
-
-  > a {
-    transition: ${transition};
-    color: inherit;
-    writing-mode: vertical-rl;
-    letter-spacing: 4px;
-    font-size: ${fontSizes.sm};
-  }
-
-  > a:hover {
-    color: ${colors.green};
-    transform: translateY(-5px) scale(1.1, 1.1);
-  }
-
-  @media (max-width: ${medias.sm}) {
-    right: 20px;
-    transition-delay: 0ms;
-  }
-`
-const SocialList = styled.ul`
-  padding: 0;
-  margin: 0;
-  justify-content: center;
-  align-items: center;
-
-  > li {
-    margin-bottom: 20px;
-  }
-
-  > li:last-child {
-    margin-bottom: 0;
-  }
-
-  > li > a > svg {
-    color: inherit;
-    width: 20px;
-    height: 20px;
-    transition: ${transition};
-  }
-
-  > li > a > svg:hover {
-    color: ${colors.green};
-    transform: translateY(-5px) scale(1.1, 1.1);
-  }
-`
-
-const HambergerContainer = styled.div`
-  display: none;
-  @media (max-width: ${medias.xs}) {
-    display: block;
-  }
-  z-index: 1001;
-`
-
-const HambergerButton = styled.button`
-  opacity: 0;
-  transition: ${transition};
-  transition-delay: 100ms;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`
-
-const HambergerBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 24px;
-  width: 30px;
-  position: relative;
-`
-
-const HambergerInner = styled.div`
-  width: 100%;
-  height: 2px;
-  background-color: ${colors.green};
-  transition: transform 0.22s ease-in-out;
-  transform: rotate(0deg);
-
-  &.active {
-    transform: rotate(225deg);
-  }
-
-  ::before {
-    width: 120%;
-    content: '';
-    height: 2px;
-    background-color: ${colors.green};
-    position: absolute;
-    top: 0;
-    right: 0;
-    transition: transform 0.22s ease-in-out;
-    transform: rotate(0deg) translateY(-10px);
-  }
-
-  &.active::before {
-    width: 100%;
-    transform: rotate(90deg) translateY(0);
-  }
-
-  ::after {
-    content: '';
-    height: 2px;
-    width: 80%;
-    background-color: ${colors.green};
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transition: transform 0.22s ease-in-out;
-    transform: rotate(0deg) translateY(10px);
-  }
-
-  &.active::after {
-    width: 100%;
-    transform: rotate(90deg) translateY(0);
-  }
-`
-
-const Navbar = styled.div`
-  position: absolute;
-  top: 0;
-  right: calc(-1 * min(75vw, 400px));
-  background-color: ${colors.lightNavy};
-  width: min(75vw, 400px);
-  height: 100vh;
-  transition: right 0.5s ease-in-out;
-  z-index: 1000;
-  counter-reset: section;
-
-  &.active {
-    right: 0;
-  }
-
-  > ol,
-  > ol > li,
-  > ol > li > a {
-    text-decoration: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  > ol {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-
-  > ol > li {
-    padding-bottom: 35px;
-    width: 100%;
-    text-align: center;
-  }
-
-  > ol > li > a {
-    font-size: ${fontSizes.md};
-    color: ${colors.lightestSlate};
-    transition: ${transition};
-
-    ::before {
-      display: block;
-      content: '';
-      color: ${colors.green};
-      counter-increment: section;
-      content: '0' counter(section) '.';
-      padding-bottom: 3px;
-    }
-
-    :hover {
-      color: ${colors.green};
-    }
-  }
-`
 
 const HeaderComponent = () => {
   const hambergerRef = useRef()
@@ -252,19 +37,19 @@ const HeaderComponent = () => {
     <>
       <Header id="header">
         <Logo>
-          <img src="logo.png" alt="logo"></img>
+          <img src="logo.png" alt="logo" className="fadeIn"></img>
         </Logo>
         <ol>
-          <li>
+          <li className="fadeIn">
             <a href="#about">About</a>
           </li>
-          <li>
+          <li className="fadeIn">
             <a href="#experience">Experience</a>
           </li>
-          <li>
+          <li className="fadeIn">
             <a href="#work">Work</a>
           </li>
-          <li>
+          <li className="fadeIn">
             <a href="#contact">Contact</a>
           </li>
         </ol>
@@ -297,7 +82,7 @@ const HeaderComponent = () => {
           </ol>
         </Navbar>
       </Header>
-      <SidePageLeft id="sideLeft">
+      <SidePageLeft id="sideLeft" className="fadeIn">
         <SocialList>
           <li>
             <a
@@ -397,7 +182,7 @@ const HeaderComponent = () => {
           </li>
         </SocialList>
       </SidePageLeft>
-      <SidePageRight id="sideRight">
+      <SidePageRight id="sideRight" className="fadeIn">
         <a href="mailto:thinhsofa@gmail.com">thinhsofa@gmail.com</a>
       </SidePageRight>
     </>

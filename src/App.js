@@ -458,12 +458,13 @@ function App() {
 
     elementHeader.childNodes.forEach(element => {
       element.childNodes.forEach(child => {
-        child.classList.add('fadeIn')
+        child.classList.add('active')
       })
     })
 
-    sideLeft.classList.add('fadeIn')
-    sideRight.classList.add('fadeIn')
+    sideLeft.classList.add('active')
+    sideRight.classList.add('active')
+
     const sections = document.querySelectorAll('section')
     const observer = new IntersectionObserver(
       entries => {
