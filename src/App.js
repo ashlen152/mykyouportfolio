@@ -532,7 +532,7 @@ function App() {
               <Inner>
                 <InnerLeft>
                   <p>
-                    Hello! My name is and I enjoy creating things by
+                    Hello! My name is Thinh and I enjoy creating things by
                     programming, My first web development started back in 2010
                     when I decided to try creating a forum for Audition player —
                     turns out hacking a custom post button taught me a lot about

@@ -37,7 +37,15 @@ const HeaderComponent = () => {
     <>
       <Header id="header">
         <Logo>
-          <img src="logo.png" alt="logo" className="fadeIn"></img>
+          <img
+            src="logo.png"
+            alt="logo"
+            className="fadeIn"
+            onClick={e => {
+              e.preventDefault()
+              window.location = window.location.pathname
+            }}
+          ></img>
         </Logo>
         <ol>
           <li className="fadeIn">
@@ -55,6 +63,7 @@ const HeaderComponent = () => {
         </ol>
         <HambergerContainer ref={hambergerContainerRef}>
           <HambergerButton
+            className="fadeIn"
             onClick={() => {
               toggleHambergerButton()
               setIsOpenHamberger(!isOpenHamberger)
@@ -68,16 +77,48 @@ const HeaderComponent = () => {
         <Navbar ref={navBarRef}>
           <ol>
             <li>
-              <a href="#about">About</a>
+              <a
+                href="#about"
+                onClick={() => {
+                  setIsOpenHamberger(false)
+                  toggleHambergerButton()
+                }}
+              >
+                About
+              </a>
             </li>
             <li>
-              <a href="#experience">Experience</a>
+              <a
+                href="#experience"
+                onClick={() => {
+                  setIsOpenHamberger(false)
+                  toggleHambergerButton()
+                }}
+              >
+                Experience
+              </a>
             </li>
             <li>
-              <a href="#work">Work</a>
+              <a
+                href="#work"
+                onClick={() => {
+                  setIsOpenHamberger(false)
+                  toggleHambergerButton()
+                }}
+              >
+                Work
+              </a>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a
+                href="#contact"
+                onClick={() => {
+                  setIsOpenHamberger(false)
+                  toggleHambergerButton()
+                }}
+              >
+                Contact
+              </a>
             </li>
           </ol>
         </Navbar>
