@@ -19,6 +19,7 @@ export const Header = styled.header`
   &.fixed {
     background-color: rgba(10, 25, 47, 0.85);
     box-shadow: 0 10px 30px -10px hsla(218, 64%, 7%, 70%);
+    height: 70px;
   }
 
   @media (max-width: ${medias.xs}) {
@@ -98,6 +99,7 @@ export const Logo = styled.div`
   img {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 `
 export const SidePage = styled.div`
@@ -209,12 +211,19 @@ export const HambergerContainer = styled.div`
 `
 
 export const HambergerButton = styled.button`
-  opacity: 0;
   transition: ${transition};
-  transition-delay: 100ms;
+  transition-delay: 200ms;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  &.fadeIn {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  &.fadeIn.active {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 `
 
 export const HambergerBox = styled.div`
