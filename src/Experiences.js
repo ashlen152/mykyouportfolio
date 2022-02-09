@@ -45,6 +45,8 @@ const StyledTab = styled(Tab)`
     border-bottom: 2px solid ${colors.lightestNavy};
     border-left: none;
     width: var(--tab-width);
+    padding: 0;
+    justify-content: center;
   }
 `
 
