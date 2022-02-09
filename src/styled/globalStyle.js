@@ -161,7 +161,7 @@ const GlobalStyled = createGlobalStyle`
 
   :root {
   --tab-height: 50px;
-  --tab-width: 120px;
+  --tab-width: 100px;
   --border-radius: 5px;
   --nav-scroll-height: 100px;
 }
