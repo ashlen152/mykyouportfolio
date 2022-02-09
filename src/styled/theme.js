@@ -1,6 +1,7 @@
 const theme = {
   colors: {
     darkNavy: 'hsl(218, 64%, 7%)',
+    navyShadow: 'hsla(218, 64%, 7%, 70%)',
     navy: 'hsl(218, 65%, 11%)',
     lightNavy: 'hsl(218, 58%, 16%)',
     lightestNavy: 'hsl(218, 41%, 23%)',
@@ -18,9 +19,9 @@ const theme = {
   },
 
   fontSizes: {
-    base: `16px`,
-    xs: `12px`,
-    sm: `14px`,
+    base: `15px`,
+    xs: `11px`,
+    sm: `13px`,
     md: `18px`,
     lg: `24px`,
     xl: `28px`,
