@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import theme from './theme'
+import styled from 'styled-components'
 
 const { colors, fontSizes, fonts } = theme
 
@@ -115,6 +116,20 @@ const GlobalStyled = createGlobalStyle`
     font-size: clamp(28px, 6vw, 70px);
   }
 
+
+  ul,li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    display: inline-block;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    color: inherit;
+    position: relative;
+  }
+
   .blur {
     filter: blur(5px) brightness(0.7);
     transition: var(--transition);
@@ -146,6 +161,7 @@ const GlobalStyled = createGlobalStyle`
 
   :root {
   --tab-height: 50px;
+  --tab-width: 120px;
   --border-radius: 5px;
   --nav-scroll-height: 100px;
 }
@@ -167,3 +183,25 @@ const GlobalStyled = createGlobalStyle`
 `
 
 export default GlobalStyled
+
+export const Skills = styled.ul`
+  display: grid;
+  list-style: none${colors.navyShadow}  padding: 0;
+
+  li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: ${fontSizes.sm};
+  }
+
+  li::before {
+    content: '▹';
+    position: absolute;
+    left: 0px;
+    top: 3px;
+    color: ${colors.green};
+    font-size: ${fontSizes.sm};
+    line-height: 12px;
+  }
+`
